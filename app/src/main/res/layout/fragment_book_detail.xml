@@ -2,42 +2,39 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageBook"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:0.5"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/sample" />
+        app:srcCompat="@drawable/sample" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/bookTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/bookPrice"
-        app:layout_constraintStart_toEndOf="@id/imageBook"
-        app:layout_constraintTop_toTopOf="@id/imageBook"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/labelContainer"
         tools:text="Judul Buku" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/bookDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
         android:textColor="@color/secondary_grey"
         android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@id/bookPrice"
-        app:layout_constraintStart_toEndOf="@id/imageBook"
+        app:layout_constraintEnd_toEndOf="@id/bookTitle"
+        app:layout_constraintStart_toStartOf="@id/bookTitle"
         app:layout_constraintTop_toBottomOf="@id/bookTitle"
         tools:text="Judul Buku" />
 
@@ -45,15 +42,24 @@
         android:id="@+id/bookAuthor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
         android:textColor="@color/grey"
         android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@id/bookPrice"
-        app:layout_constraintStart_toEndOf="@id/imageBook"
+        app:layout_constraintEnd_toEndOf="@id/bookDescription"
+        app:layout_constraintStart_toStartOf="@id/bookDescription"
         app:layout_constraintTop_toBottomOf="@id/bookDescription"
         tools:text="Author: Mira Lesmana" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/ratingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/bookTitle"
+        app:layout_constraintTop_toBottomOf="@id/bookAuthor"
+        tools:text="4.5" />
 
     <androidx.appcompat.widget.AppCompatRatingBar
         android:id="@+id/voteRating"
@@ -61,33 +67,57 @@
         android:layout_width="wrap_content"
         android:layout_height="16dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:numStars="5"
-        app:layout_constraintStart_toEndOf="@id/imageBook"
-        app:layout_constraintTop_toBottomOf="@id/bookAuthor" />
+        app:layout_constraintBottom_toBottomOf="@id/ratingText"
+        app:layout_constraintStart_toEndOf="@id/ratingText"
+        app:layout_constraintTop_toTopOf="@id/ratingText" />
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="4dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/secondary_grey"
+        app:layout_constraintBottom_toBottomOf="@id/ratingText"
+        app:layout_constraintStart_toEndOf="@id/voteRating"
+        app:layout_constraintTop_toTopOf="@id/ratingText" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/bookReviewCount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/ratingText"
+        app:layout_constraintStart_toEndOf="@id/separator"
+        app:layout_constraintTop_toTopOf="@id/ratingText"
+        tools:text="20 Reviews" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/bookPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/imageBook"
+        app:layout_constraintTop_toBottomOf="@id/imageBook"
         tools:text="Rp 150.000" />
 
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/labelContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
         app:alignContent="flex_start"
         app:alignItems="flex_start"
         app:flexWrap="wrap"
-        app:layout_constraintEnd_toEndOf="@id/imageBook"
-        app:layout_constraintStart_toStartOf="@id/imageBook"
+        app:layout_constraintEnd_toStartOf="@id/bookPrice"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageBook">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -100,38 +130,33 @@
             android:text="@string/best_seller_label"
             android:textColor="@color/white"
             android:textSize="12sp"
-            android:visibility="gone" />
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/newLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
             android:background="@drawable/round_text_background"
             android:padding="4dp"
             android:text="@string/new_label"
             android:textColor="@color/white"
             android:textSize="12sp"
-            android:visibility="gone" />
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/hotLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:background="@drawable/round_text_background"
             android:padding="4dp"
             android:text="@string/hot_lesson_label"
             android:textColor="@color/white"
             android:textSize="12sp"
-            android:visibility="gone" />
-
+            android:visibility="gone"
+            tools:visibility="visible" />
     </com.google.android.flexbox.FlexboxLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="12dp"
-        android:background="@color/grey_white"
-        app:layout_constraintTop_toBottomOf="@id/voteRating" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

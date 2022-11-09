@@ -6,6 +6,18 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.example.ntttest.home.presentation.HomeFragment" />
+        android:name="com.example.ntttest.home.presentation.HomeFragment">
+        <action
+            android:id="@+id/openDetailPage"
+            app:destination="@id/detail">
+            <argument
+                android:name="book.detail.id"
+                app:argType="integer" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/detail"
+        android:name="com.example.ntttest.bookdetail.presentation.BookDetailFragment" />
 
 </navigation>

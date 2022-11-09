@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ntttest.databinding.FragmentHomeBinding
 import com.example.ntttest.home.presentation.adapter.BookAdapter
@@ -17,7 +18,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    var binding: FragmentHomeBinding? = null
+    private var binding: FragmentHomeBinding? = null
 
     var bookAdapter: BookAdapter? = null
 
@@ -35,7 +36,9 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bookAdapter = BookAdapter()
+        bookAdapter = BookAdapter {
+            findNavController().navigate(HomeFragmentDirections.openDetailPage(it))
+        }
 
         binding?.apply {
             bookList.apply {

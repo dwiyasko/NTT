@@ -5,4 +5,6 @@
     <string name="hot_lesson_label">Hot Lesson</string>
     <string name="price_placeholder">IDR %s</string>
     <string name="sort_label">Sort</string>
+    <string name="review_placeholder">%d Reviews</string>
+    <string name="no_review_label">No Review yet!</string>
 </resources>

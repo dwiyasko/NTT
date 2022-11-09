@@ -9,7 +9,10 @@ import com.example.ntttest.home.domain.model.Book
 import com.example.ntttest.utils.isWithinThisWeek
 import java.text.DecimalFormat
 
-class BookViewHolder(private val binding: ViewItemBookBinding) : ViewHolder(binding.root) {
+class BookViewHolder(
+    private val binding: ViewItemBookBinding,
+    private val onItemClick: (Int) -> Unit
+) : ViewHolder(binding.root) {
 
     fun bind(book: Book) {
         binding.apply {
@@ -30,6 +33,8 @@ class BookViewHolder(private val binding: ViewItemBookBinding) : ViewHolder(bind
             bestSellerLabel.isVisible = book.isBestSeller()
             hotLabel.isVisible = book.isHotLesson()
             newLabel.isVisible = book.isNewRelease()
+
+            container.setOnClickListener { onItemClick(book.id) }
         }
     }
 

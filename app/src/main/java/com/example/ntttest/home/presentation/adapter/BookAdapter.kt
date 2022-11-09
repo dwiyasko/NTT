@@ -7,13 +7,15 @@ import androidx.recyclerview.widget.DiffUtil
 import com.example.ntttest.databinding.ViewItemBookBinding
 import com.example.ntttest.home.domain.model.Book
 
-class BookAdapter : PagingDataAdapter<Book, BookViewHolder>(Companion) {
+class BookAdapter(
+    private val onItemClick: (Int) -> Unit
+) : PagingDataAdapter<Book, BookViewHolder>(Companion) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
         val binding =
             ViewItemBookBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return BookViewHolder(binding)
+        return BookViewHolder(binding, onItemClick)
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {

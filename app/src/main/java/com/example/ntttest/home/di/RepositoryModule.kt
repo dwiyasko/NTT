@@ -1,4 +1,4 @@
-package com.example.ntttest.di
+package com.example.ntttest.home.di
 
 import com.example.ntttest.home.data.repository.BookRepositoryImpl
 import com.example.ntttest.home.domain.repository.BookRepository
