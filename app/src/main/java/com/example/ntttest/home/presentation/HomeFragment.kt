@@ -42,6 +42,10 @@ class HomeFragment : Fragment() {
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = bookAdapter
             }
+
+            iconSort.setOnClickListener {
+                viewModel.toggleSort()
+            }
         }
 
         observeData()

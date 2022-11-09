@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">NTT Test</string>
+    <string name="best_seller_label">Best Seller</string>
+    <string name="new_label">New</string>
+    <string name="hot_lesson_label">Hot Lesson</string>
+    <string name="price_placeholder">IDR %s</string>
+    <string name="sort_label">Sort</string>
 </resources>
