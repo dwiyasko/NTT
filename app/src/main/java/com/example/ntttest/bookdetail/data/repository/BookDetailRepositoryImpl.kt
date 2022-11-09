@@ -2,8 +2,7 @@ package com.example.ntttest.bookdetail.data.repository
 
 import com.example.ntttest.bookdetail.data.dto.BookDetailDto
 import com.example.ntttest.bookdetail.domain.model.Action
-import com.example.ntttest.bookdetail.domain.model.Action.AddToWishlist
-import com.example.ntttest.bookdetail.domain.model.Action.None
+import com.example.ntttest.bookdetail.domain.model.Action.*
 import com.example.ntttest.bookdetail.domain.model.BookDetail
 import com.example.ntttest.bookdetail.domain.repository.BookDetailRepository
 import java.util.*
@@ -32,9 +31,13 @@ class BookDetailRepositoryImpl @Inject constructor() : BookDetailRepository {
         } ?: throw IndexOutOfBoundsException()
     }
 
-    override suspend fun putInWishlist(id: Int) {}
+    override suspend fun putInWishlist(id: Int) {
+        generateContents(actionOnId = id, action = AddToWishlist)
+    }
 
-    override suspend fun removeFromWishlist(id: Int) {}
+    override suspend fun removeFromWishlist(id: Int) {
+        generateContents(actionOnId = id, action = RemoveFromWishlist)
+    }
 
     private fun generateContents(actionOnId: Int = -1, action: Action = None): List<BookDetailDto> {
         return (1..100).map { index ->

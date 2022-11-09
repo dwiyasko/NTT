@@ -7,4 +7,6 @@
     <string name="sort_label">Sort</string>
     <string name="review_placeholder">%d Reviews</string>
     <string name="no_review_label">No Review yet!</string>
+    <string name="add_to_wishlist_label">Add To Wishlist</string>
+    <string name="remove_from_wishlist_label">Remove From Wishlist</string>
 </resources>

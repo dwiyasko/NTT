@@ -61,6 +61,23 @@ class BookDetailFragment : Fragment() {
                 bestSellerLabel.isVisible = book.isBestSeller()
                 hotLabel.isVisible = book.isHotLesson()
                 newLabel.isVisible = book.isNewRelease()
+
+                toggleViewFavorite(book.isInWishList)
+                btnAddFavorite.setOnClickListener {
+                    viewModel.toggleWishlist()
+                }
+            }
+        }
+    }
+
+    private fun toggleViewFavorite(isInWishList: Boolean) {
+        binding?.apply {
+            if (isInWishList) {
+                btnAddFavorite.text = getString(R.string.remove_from_wishlist_label)
+                btnAddFavorite.setIconResource(R.drawable.ic_unfavorite)
+            } else {
+                btnAddFavorite.text = getString(R.string.add_to_wishlist_label)
+                btnAddFavorite.setIconResource(R.drawable.ic_favorite)
             }
         }
     }
